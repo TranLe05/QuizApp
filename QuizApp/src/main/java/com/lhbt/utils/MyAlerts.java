@@ -16,6 +16,7 @@ public class MyAlerts {
     
     private MyAlerts() {
         this.alert = new Alert(Alert.AlertType.INFORMATION);
+        this.alert.setHeaderText("Quiz App");
     }
     
     public static MyAlerts getInstance() {
@@ -25,7 +26,6 @@ public class MyAlerts {
     }
     
     public void showMessage(String msg) {
-        this.alert.setHeaderText("Quiz App");
         this.alert.setContentText(msg);
         this.alert.showAndWait();
     }
