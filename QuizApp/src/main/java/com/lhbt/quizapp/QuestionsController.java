@@ -19,7 +19,13 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.control.*;
+=======
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+>>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -32,8 +38,12 @@ public class QuestionsController implements Initializable{
     @FXML private ComboBox<Category> cbCates;
     @FXML private ComboBox<Level> cbLevels;
     @FXML private VBox vboxChoices;
+<<<<<<< HEAD
     @FXML private TextArea txtContent;
     @FXML private ToggleGroup toggleChoice;
+=======
+    
+>>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
 
     private static final CategoryServices cateServices = new CategoryServices();
     private static final LevelServices levelServices = new LevelServices();
@@ -49,6 +59,7 @@ public class QuestionsController implements Initializable{
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
     public void addChoice(ActionEvent event) {
         HBox h = new HBox();
@@ -84,4 +95,18 @@ public class QuestionsController implements Initializable{
             MyAlerts.getInstance().showMessage("Dữ liệu không hợp lệ!");
         }
     }
+=======
+    
+    public void addChoice(ActionEvent event) {
+        HBox h = new HBox();
+        h.getStyleClass().add("Main");
+        
+        RadioButton rdo = new RadioButton();
+        TextField txt = new TextField();
+        
+        h.getChildren().addAll(rdo, txt);
+        
+        this.vboxChoices.getChildren().add(h);
+    }
+>>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
 }

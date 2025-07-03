@@ -17,6 +17,7 @@ public class LevelServices {
 
         //Truy van
         List<Level> levels = new ArrayList<>();
+<<<<<<< HEAD
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM level")) {
             while (rs.next()) {
@@ -29,6 +30,15 @@ public class LevelServices {
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Lỗi khi lấy danh sách level: " + e.getMessage());
+=======
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String note = rs.getString("note");
+
+            Level l = new Level(id, name, note);
+            levels.add(l);
+>>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
         }
 
         return levels;
