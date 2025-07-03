@@ -16,19 +16,21 @@ public class LevelServices {
         Connection conn = JdbcConnector.getInstance().connect();
 
         //Truy van
-        Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM level");
-
         List<Level> levels = new ArrayList<>();
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-
-            Level l = new Level(id, name);
-            levels.add(l);
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM level")) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String note = rs.getString("note");
+                Level l = new Level(id, name, note);
+                levels.add(l);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Lỗi khi lấy danh sách level: " + e.getMessage());
         }
 
-        conn.close();
         return levels;
     }
 }

@@ -16,19 +16,20 @@ public class CategoryServices {
         Connection conn = JdbcConnector.getInstance().connect();
 
         //Truy van
-        Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM category");
-
         List<Category> cates = new ArrayList<>();
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-
-            Category c = new Category(id, name);
-            cates.add(c);
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM category")) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                Category c = new Category(id, name);
+                cates.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Lỗi khi lấy danh sách category: " + e.getMessage());
         }
 
-        conn.close();
         return cates;
     }
 }
