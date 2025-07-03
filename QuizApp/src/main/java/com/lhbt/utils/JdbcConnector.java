@@ -22,7 +22,7 @@ public class JdbcConnector {
     private JdbcConnector() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/quizdb";
         String user = "root";
-        String password = "Baotran1805@";
+        String password = "root";
         this.conn = DriverManager.getConnection(url, user, password);
     }
 

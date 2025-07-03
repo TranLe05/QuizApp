@@ -13,9 +13,14 @@ import com.lhbt.services.CategoryServices;
 
 import com.lhbt.services.LevelServices;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -25,6 +30,8 @@ import javafx.scene.control.ComboBox;
 public class QuestionsController implements Initializable{
     @FXML private ComboBox<Category> cbCates;
     @FXML private ComboBox<Level> cbLevels;
+    @FXML private VBox vboxChoices;
+    
 
     private static final CategoryServices cateServices = new CategoryServices();
     private static final LevelServices levelServices = new LevelServices();
@@ -40,4 +47,15 @@ public class QuestionsController implements Initializable{
         }
     }
     
+    public void addChoice(ActionEvent event) {
+        HBox h = new HBox();
+        h.getStyleClass().add("Main");
+        
+        RadioButton rdo = new RadioButton();
+        TextField txt = new TextField();
+        
+        h.getChildren().addAll(rdo, txt);
+        
+        this.vboxChoices.getChildren().add(h);
+    }
 }

@@ -23,12 +23,12 @@ public class LevelServices {
         while (rs.next()) {
             int id = rs.getInt("id");
             String name = rs.getString("name");
+            String note = rs.getString("note");
 
-            Level l = new Level(id, name);
+            Level l = new Level(id, name, note);
             levels.add(l);
         }
 
-        conn.close();
         return levels;
     }
 }

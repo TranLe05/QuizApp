@@ -28,7 +28,6 @@ public class CategoryServices {
             cates.add(c);
         }
 
-        conn.close();
         return cates;
     }
 }
