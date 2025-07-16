@@ -45,8 +45,8 @@ public class QuestionsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            this.cbCates.setItems(FXCollections.observableList(cateServices.getCates()));
-            this.cbLevels.setItems(FXCollections.observableList(levelServices.getLevels()));
+            this.cbCates.setItems(FXCollections.observableList(cateServices.list()));
+            this.cbLevels.setItems(FXCollections.observableList(levelServices.list()));
         } catch (SQLException e) {
             System.out.println("Kết nối thất bại!");
             e.printStackTrace();
@@ -61,6 +61,8 @@ public class QuestionsController implements Initializable {
         rdo.setToggleGroup(toggleChoice);
 
         TextField txt = new TextField();
+        txt.getStyleClass().add("Input");
+        txt.setPromptText("Nội dung lựa chọn.");
 
         h.getChildren().addAll(rdo, txt);
 
