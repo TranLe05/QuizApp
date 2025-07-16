@@ -10,11 +10,7 @@ public class Level {
         this.name = name;
         this.note = note;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
     public Level(String name, String note) {
         this.name = name;
         this.note = note;

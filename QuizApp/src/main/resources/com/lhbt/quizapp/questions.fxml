@@ -9,12 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
 <?import javafx.scene.control.ToggleGroup?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="600.0" styleClass="Main" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhbt.quizapp.QuestionsController">
-=======
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Main" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhbt.quizapp.QuestionsController">
->>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="Quản Lý Câu Hỏi" wrappingWidth="312.48046875" />
       <TextArea fx:id="txtContent" prefHeight="65.0" prefWidth="600.0" promptText="Nội dung câu hỏi" />
@@ -41,11 +37,6 @@
                   <TextField prefHeight="18.0" prefWidth="149.0" />
                </children>
             </HBox>
-<<<<<<< HEAD
-=======
-            <Button mnemonicParsing="false" onAction="#addChoice" styleClass="Button" text="Thêm lựa chọn" />
-            <Button mnemonicParsing="false" styleClass="Button" text="Thêm câu hỏi" />
->>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
          </children>
       </VBox>
       <Button mnemonicParsing="false" onAction="#addChoice" styleClass="Button" text="Thêm lựa chọn" />

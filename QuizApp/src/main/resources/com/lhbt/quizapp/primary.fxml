@@ -5,12 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Main" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhbt.quizapp.PrimaryController">
-=======
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Main" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhbt.quizapp.PrimaryController">
->>>>>>> c696abc57aa9089a7a18c37e741a9c08560d9830
-   <children>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Main" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhbt.quizapp.PrimaryController"><children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="Quiz App" />
       <Button mnemonicParsing="false" onAction="#handleQuestionsManager" styleClass="Button" text="Quản lý câu hỏi" />
       <Button mnemonicParsing="false" onAction="#handlePractice" styleClass="Button" text="Luyện tập" />
