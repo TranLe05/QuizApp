@@ -7,4 +7,5 @@ module com.lhbt.quizapp {
 
     opens com.lhbt.quizapp to javafx.fxml;
     exports com.lhbt.quizapp;
+    exports com.lhbt.pojo;
 }

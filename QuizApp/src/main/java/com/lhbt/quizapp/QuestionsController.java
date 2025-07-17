@@ -14,7 +14,9 @@ import com.lhbt.pojo.Question;
 import com.lhbt.services.CategoryServices;
 import com.lhbt.services.LevelServices;
 import com.lhbt.services.QuestionServices;
+import com.lhbt.utils.Configs;
 import com.lhbt.utils.MyAlerts;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +25,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -37,20 +40,34 @@ public class QuestionsController implements Initializable {
     @FXML private VBox vboxChoices;
     @FXML private TextArea txtContent;
     @FXML private ToggleGroup toggleChoice;
+    @FXML private TableView<Question> tbQuestions;
+    @FXML private TextField txtSearch;
 
-    private static final CategoryServices cateServices = new CategoryServices();
-    private static final LevelServices levelServices = new LevelServices();
-    private static final QuestionServices questionServices = new QuestionServices();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            this.cbCates.setItems(FXCollections.observableList(cateServices.list()));
-            this.cbLevels.setItems(FXCollections.observableList(levelServices.list()));
+//            this.cbCates.setItems(FXCollections.observableList(cateServices.list()));
+//            this.cbLevels.setItems(FXCollections.observableList(levelServices.list()));
+            this.cbCates.setItems(FXCollections.observableList(Configs.cateServices.getCates()));
+            this.cbLevels.setItems(FXCollections.observableList(Configs.levelServices.getLevels()));
+            
+            this.loadColumns();
+            this.tbQuestions.setItems(FXCollections.observableList(Configs.questionServices.getQuestions()));
         } catch (SQLException e) {
             System.out.println("Kết nối thất bại!");
             e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(QuestionsController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        this.txtSearch.textProperty().addListener(e -> {
+            this.tbQuestions.getItems().clear();
+            try {
+                this.tbQuestions.setItems(FXCollections.observableList(Configs.questionServices.getQuestions(this.txtSearch.getText())));
+            } catch (Exception ex) {
+                Logger.getLogger(QuestionsController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+        });
     }
 
     public void addChoice(ActionEvent event) {
@@ -81,12 +98,24 @@ public class QuestionsController implements Initializable {
                         ((RadioButton)h.getChildren().get(0)).isSelected());
                 b.addChoice(choice);
             }
-            questionServices.addQuestion(b.build());
+            Configs.questionServices.addQuestion(b.build());
             MyAlerts.getInstance().showMessage("Thêm câu hỏi thành công!");
         } catch (SQLException e) {
             MyAlerts.getInstance().showMessage("Thêm không thành công vì " + e.getMessage());
         } catch (Exception e) {
             MyAlerts.getInstance().showMessage("Dữ liệu không hợp lệ!");
         }
+    }
+    
+    private void loadColumns() {
+        TableColumn columnId = new TableColumn("ID");
+        columnId.setCellValueFactory(new PropertyValueFactory("id"));
+        columnId.setPrefWidth(100);
+        
+        TableColumn columnContent = new TableColumn("Content");
+        columnContent.setCellValueFactory(new PropertyValueFactory("content"));
+        columnContent.setPrefWidth(300);
+        
+        this.tbQuestions.getColumns().addAll(columnId, columnContent);
     }
 }
